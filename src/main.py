@@ -17,7 +17,7 @@ def main(page: ft.Page):
     page.title = "Login"
     page.go("/")
 
-
+    #teste
     print(client_id)
     provider = GoogleOAuthProvider(
         client_id=client_id,
@@ -67,6 +67,8 @@ def main(page: ft.Page):
         print(f"Rota atual: {page.route}")
         page.views.clear()
 
+
+        #Teste
         if page.route == "/inicial":
             print("Carregando paginaInicio...")
             try:
