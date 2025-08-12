@@ -50,12 +50,20 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         flutter-version: ${{ env.FLUTTER_VERSION }}
+        channel: stable
+        # Adicione esta linha para aceitar as licenças
+        # Mesmo que você não esteja construindo para Android, isso é um pré-requisito
+        # para a maioria dos comandos do Flutter, incluindo aqueles que o Flet usa.
+        flutter-action: true
+        # Adicione esta linha para aceitar automaticamente as licenças do Android
+        cache: true
+        # Adicione a flag 'android-licenses'
+        android-licenses: true
+
 
     - name: Flet Build Web
       run: |
-        flutter config --no-analytics
-        flutter doctor -v
-        flet build web
+        flet build web --base-url ${GITHUB_REPOSITORY#*/} --route-url-strategy hash
         
     - name: Upload Artifact
       uses: actions/upload-pages-artifact@v3
