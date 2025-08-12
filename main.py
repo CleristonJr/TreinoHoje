@@ -22,7 +22,7 @@ def main(page: ft.Page):
     provider = GoogleOAuthProvider(
         client_id=client_id,
         client_secret=client_secret,
-        redirect_url='http://localhost:9000/oauth_callback'
+        redirect_url='https://cleristonjr.github.io/TreinoHoje/oauth_callback'
     )
 
     textresult = ft.Column()
@@ -156,4 +156,5 @@ def main(page: ft.Page):
     page.on_route_change = mudar_tela
     mudar_tela(page.route) # Carrega a tela inicial corretamente
 
-ft.app(target=main, assets_dir="assets", port=9000, view=ft.AppView.FLET_APP_WEB)
+ft.app(target=main, assets_dir="assets", view=ft.AppView.FLET_APP_WEB)
+
